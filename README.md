@@ -15,7 +15,7 @@ chmod +x *.sh
 To run the inference, you need to first create a docker container with all the requirements. 
 - First, build the docker image: 
 ```bash
-docker build -t dslv1 . 
+./docker_build.sh 
 ```
 - Create a docker container:
 ~~~
