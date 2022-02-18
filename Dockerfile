@@ -1,7 +1,7 @@
 ARG BASE_IMAGE=nvcr.io/nvidia/deepstream-l4t:6.0-samples
 FROM ${BASE_IMAGE}
 
-ARG REPOSITORY_NAME=dsl-demo
+ARG REPOSITORY_NAME=deepstream-service-library-docker
 
 ENV DEBIAN_FRONTEND=noninteractive
 ENV LANG C.UTF-8
@@ -75,7 +75,6 @@ RUN apt-get install -y libopencv-dev
 RUN cp -r /usr/lib/aarch64-linux-gnu/pkgconfig/opencv.pc /usr/lib/aarch64-linux-gnu/pkgconfig/opencv4.pc
 
 RUN apt-get update
-#RUN cd /dsl-demo/
 WORKDIR /${REPOSITORY_NAME}
 RUN apt-get install -y apache2-dev
 #RUN git clone https://github.com/prominenceai/deepstream-services-library.git -Future works
@@ -86,7 +85,10 @@ RUN apt-get install libapr1 libapr1-dev
 RUN apt-get update
 #COPY Makefile  /${REPOSITORY_NAME}/dsl-Future works
 #RUN make -j4
-COPY hlkv1 /${REPOSITORY_NAME}/dslv1
-RUN unzip -o /${REPOSITORY_NAME}/dslv1/test.zip
-RUN rm -rf /${REPOSITORY_NAME}/dslv1/test.zip
+COPY test.zip /${REPOSITORY_NAME}/
+COPY examples /${REPOSITORY_NAME}/examples
+COPY dsl.py /${REPOSITORY_NAME}/
+RUN unzip -o /${REPOSITORY_NAME}/test.zip
+RUN rm -rf /${REPOSITORY_NAME}/test.zip
 #RUN cp -r  /opt/nvidia/deepstream/deepstream/lib/libnvds_nvmultiobjecttracker.so /opt/nvidia/deepstream/deepstream/lib/libnvds_mot_iou.so
+

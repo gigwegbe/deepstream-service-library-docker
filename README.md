@@ -3,12 +3,12 @@ The repo contains  docker setup for Deepstream Service Library
 
 
 ### Install system dependencies
-To run the project, first run the `setup.sh` to install all necessary system dependencies. 
+To run the project, first run the `docker_setup.sh` to install all necessary system dependencies. 
 ~~~
 chmod +x *.sh
 ~~~
 ~~~
-./setup.sh
+./docker_setup.sh
 ~~~
  
 ### Build a container
@@ -20,4 +20,8 @@ docker build -t dslv1 .
 - Create a docker container:
 ~~~
 ./docker_run.sh
+~~~
+- Run the example script in `/deepstream-service-library-docker/examples/python` directory:
+~~~
+ python3 player_play_all_mp4_files_found.py
 ~~~
